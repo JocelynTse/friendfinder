@@ -2,7 +2,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 
-// Sets up Express App
+// Sets up Express app
 const app = express();
 const PORT = process.env.PORT || 8080;
 

@@ -1,7 +1,7 @@
-// DEPENDENCIES
-var path = require("path");
+// Dependencies
+const path = require("path");
 
-// ROUTING
+// Routing
 module.exports = function (app) {
 
     app.get("/survey", function (req, res) {
