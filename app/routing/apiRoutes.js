@@ -1,5 +1,5 @@
 // Load data
-const friendsData = require("../app/data/friends.js");
+const friendsData = require("../data/friends");
 
 // Routing
 module.exports = function (app) {
