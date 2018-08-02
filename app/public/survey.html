@@ -37,12 +37,12 @@
 
                                 <div class="form-group">
                                     <label for="name">Name (Required)</label>
-                                    <input type="text" class="form-control" id="name">
+                                    <input type="text" class="form-control" id="name" required>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="photo">Link to Photo Image (Required)</label>
-                                    <input type="text" class="form-control" id="photo">
+                                    <input type="text" class="form-control" id="photo" required>
                                 </div>
 
                                 <hr>
@@ -158,7 +158,26 @@
                                 </div>
 
 
-                                <button type="submit" class="btn btn-primary submit">Submit</button>
+                                <button type="submit" class="btn btn-primary submit" data-toggle="modal" data-target="#ffModal">Submit</button>
+
+                                <!-- <div class="modal fade" id="ffModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalLabel">Friendfinder</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                ... Finding friend ...
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
                             </form>
 
                         </div>
@@ -167,6 +186,8 @@
                 </div>
             </div>
 
+            <br>
+            <br>
 
             <footer class="footer">
                 <div class="container">
@@ -185,33 +206,61 @@
 
 <script type="text/javascript">
 
+    let name = $("#name").val().trim();
+    let photo = $("#photo").val().trim();
+
+    // let scores = [$("#q1").val(),
+    //             $("#q2").val(),
+    //             $("#q3").val(),
+    //             $("#q4").val(),
+    //             $("#q5").val(),
+    //             $("#q6").val(),
+    //             $("#q7").val(),
+    //             $("#q8").val(),
+    //             $("#q9").val(),
+    //             $("#q10").val()]
+
+    // let numScores = numbers.map(function(x) {
+    //     return parseInt(x, 10) });
+
     $(".submit").on("click", function (event) {
         event.preventDefault();
 
-        var newFriend = {
+        // if (name === "" || photo === "") {
+        //     alert("Please fill in required fields.");
+        // } else {
+
+        let newFriend = {
             "name": $("#name").val().trim(),
             "photo": $("#photo").val().trim(),
-            "scores": [$("#q1").val().trim(),
-            $("#q2").val(),
-            $("#q3").val(),
-            $("#q4").val(),
-            $("#q5").val(),
-            $("#q6").val(),
-            $("#q7").val(),
-            $("#q8").val(),
-            $("#q9").val(),
-            $("#q10").val()]
+            "scores": [$("#q1").val(),
+                $("#q2").val(),
+                $("#q3").val(),
+                $("#q4").val(),
+                $("#q5").val(),
+                $("#q6").val(),
+                $("#q7").val(),
+                $("#q8").val(),
+                $("#q9").val(),
+                $("#q10").val()]
         };
 
-        console.log(newFriend);
+        //console.log(newFriend);
 
-        $.post("/api/friends", newFriend,
-            function (data) {
+        //Math logic to compare newFriend to friendsData
 
-                if (data) {
-                }
-            }
-        )
+        //$.get("/api/friends")
+        //.then(function(result) {
+        //    if scores 
+        //})
+
+        $.post("/api/friends", newFriend);
+        window.location.href = "/friends"
+
+        alert("Finding friend...");
+
+        //};
+
     });
 
 </script>
